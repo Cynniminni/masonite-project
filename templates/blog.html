@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<div class="bg-white shadow-lg rounded-lg overflow-hidden mx-auto w-1/2 p-5">
+        <!-- Create a blog post -->
+        <div data-gb-custom-block data-tag="if">
+
+            <form action="/blog/create" method="POST">
+                {{ csrf_field }}
+
+                <label class="block text-xs font-semibold text-gray-600 uppercase">Title</label>
+                <input type="text"
+                       name="title"
+                       placeholder="Title"
+                       class="block w-full py-3 px-1 mt-2
+                    text-gray-800 appearance-none
+                    border-2 border-gray-100
+                    focus:text-gray-500 focus:outline-none focus:border-gray-200"><br>
+
+                <label class="block text-xs font-semibold text-gray-600 uppercase">Body</label>
+                <textarea name="body"
+                          placeholder="My post here!"
+                          class="block w-full py-3 px-1 mt-2
+                    text-gray-800 appearance-none
+                    border-2 border-gray-100
+                    focus:text-gray-500 focus:outline-none focus:border-gray-200"></textarea>
+
+                <button type="submit"
+                        value="Post!"
+                        class="w-full py-3 mt-10 bg-gray-800 rounded-sm
+                                font-medium text-white uppercase
+                                focus:outline-none hover:bg-gray-700 hover:shadow-none">Post</button>
+            </form>
+
+            <div data-gb-custom-block data-tag="else">
+
+                <a href="/login">Please Login</a>
+
+            </div>
+        </div>
+</div>
+
+<!-- End create a blog post -->
+{% endblock %}
