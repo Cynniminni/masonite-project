@@ -1,8 +1,11 @@
-html {
-    background-color: #f1f5f9;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.card {
+    @apply bg-white rounded overflow-hidden shadow-md relative;
 }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    background-color: #FFFF00;
-    color: #FFC0CB;
+.badge {
+    @apply text-xs uppercase font-bold bg-gray-100 rounded-full p-2 absolute top-0 ml-2 mt-2;
 }
