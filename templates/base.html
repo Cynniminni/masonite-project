@@ -12,10 +12,10 @@
 
     <body class="">
         <main
-            class="grid grid-cols-8 h-screen">
-            <!-- Sidebar -->
-            <div class="bg-red-300 col-span-2 border-r-2 p-2 relative">
-                <div class="flex flex-col w-3/4 absolute right-0 min-w-fit max-w-xs mr-2">
+            class="flex h-screen w-screen">
+            <!-- Left Sidebar -->
+            <div class="bg-red-300 border-r-2 p-2">
+                <div class="flex flex-col mr-2">
                     <div class="mb-2">
                         <a href="#">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-10" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -92,10 +92,10 @@
                     </a>
                 </div>
             </div>
-            <!-- End Sidebar -->
+            <!-- End Left Sidebar -->
 
-            <!-- Content -->
-            <div class="bg-blue-300 col-span-4">
+            <!-- Middle Content -->
+            <div class="bg-blue-300 max-w-xl min-w-max">
                 <div class="flex justify-between items-center border-b-2 p-3">
                     <span class="text-lg font-semibold">Home</span>
                     <span class="rounded-full hover:bg-gray-100 p-1">
@@ -155,9 +155,7 @@
                     <!-- Tweet -->
                     <div class="p-3 border-b-2 hover:bg-gray-400 transition">
                         <div class="flex gap-2">
-                            <img 
-                                class="rounded-full w-14 h-14 object-cover" 
-                                src="/static/pfp_sasuke.jpg"/>
+                            <img class="rounded-full w-14 h-14 object-cover" src="/static/pfp_sasuke.jpg"/>
                             <div
                                 class="grow">
                                 <!-- username info -->
@@ -207,9 +205,7 @@
                     <!-- End Tweet -->
                     <div class="p-3 border-b-2 hover:bg-gray-400 transition">
                         <div class="flex gap-2">
-                            <img 
-                                class="rounded-full w-14 h-14 object-cover" 
-                                src="/static/pfp_sasuke.jpg"/>
+                            <img class="rounded-full w-14 h-14 object-cover" src="/static/pfp_sasuke.jpg"/>
                             <div
                                 class="grow">
                                 <!-- username info -->
@@ -258,9 +254,7 @@
                     </div>
                     <div class="p-3 border-b-2 hover:bg-gray-400 transition">
                         <div class="flex gap-2">
-                            <img 
-                                class="rounded-full w-14 h-14 object-cover" 
-                                src="/static/pfp_sasuke.jpg"/>
+                            <img class="rounded-full w-14 h-14 object-cover" src="/static/pfp_sasuke.jpg"/>
                             <div
                                 class="grow">
                                 <!-- username info -->
@@ -307,13 +301,76 @@
                             </div>
                         </div>
                     </div>
+                    <div class="p-3 border-b-2 hover:bg-gray-400 transition">
+                        <div class="flex gap-2">
+                            <img class="rounded-full w-14 h-14 object-cover" src="/static/pfp_sasuke.jpg"/>
+                            <div
+                                class="grow">
+                                <!-- username info -->
+                                <div class="flex text-sm justify-between">
+                                    <div class="flex">
+                                        <a href="#" class="font-bold mr-1 hover:underline">Sasuke Uchiha</a>
+                                        <a href="#" class="text-gray-600">@SasukeQuoteBot · 3h</p>
+                                    </div>
+                                    <p>···</p>
+                                </div>
+                                <!-- end username info -->
+
+                                <!-- tweet body -->
+                                <p>As you'll always exist to protect the Village... so will I exist to destroy it.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <p>Make this long.</p>
+                                <!-- end tweet body -->
+
+                                <!-- tweet buttons -->
+                                <div class="flex justify-between mt-3">
+                                    <a href="#" class="flex gap-2 items-center hover:text-blue-700 transition duration-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewbox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M18 10c0 3.866-3.582 7-8 7a8.841 8.841 0 01-4.083-.98L2 17l1.338-3.123C2.493 12.767 2 11.434 2 10c0-3.866 3.582-7 8-7s8 3.134 8 7zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <p>1</p>
+                                    </a>
+                                    <a href="#" class="flex gap-2 items-center hover:text-green-700 transition duration-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewbox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/>
+                                        </svg>
+                                        <p>2</p>
+                                    </a>
+                                    <a href="#" class="flex gap-2 items-center hover:text-red-700 transition duration-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewbox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                        </svg>
+                                        <p>20</p>
+                                    </a>
+                                    <a href="#" class="flex gap-2 items-center hover:text-blue-700 transition duration-75">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewbox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM6.293 6.707a1 1 0 010-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L11 5.414V13a1 1 0 11-2 0V5.414L7.707 6.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <!-- end tweet buttons -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- Main Content -->
             </div>
-            <!-- End Content -->
+            <!-- End Middle Content -->
 
             <!-- Right Sidebar -->
-            <div class="bg-green-300 col-span-2 border-l-2 p-1 min-w-fit">
+            <div class="bg-green-300 border-l-2 p-1">
                 <div
                     class="ml-3">
                     <!-- Search bar -->
