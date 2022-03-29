@@ -8,13 +8,15 @@
         <title>Home</title>
         <!-- Import Tailwind CSS -->
         <script src="https://cdn.tailwindcss.com/"></script>
+
+        <!-- Import local css -->
+        <link href="../storage/static/app.css" rel="stylesheet"/>
     </head>
 
-    <body class="">
-        <main
-            class="flex h-screen w-screen">
+    <body>
+        <main>
             <!-- Left Sidebar -->
-            <div class="bg-red-300 border-r-2 p-2">
+            <div class="bg-red-300 border-r-2 p-2 sidebar h-full fixed">
                 <div class="flex flex-col mr-2">
                     <div class="mb-2">
                         <a href="#">
@@ -95,7 +97,7 @@
             <!-- End Left Sidebar -->
 
             <!-- Middle Content -->
-            <div class="bg-blue-300 max-w-xl min-w-max">
+            <div class="bg-blue-300 max-w-xl min-w-max content">
                 <div class="flex justify-between items-center border-b-2 p-3">
                     <span class="text-lg font-semibold">Home</span>
                     <span class="rounded-full hover:bg-gray-100 p-1">
