@@ -10,10 +10,19 @@
     left: 0;
 }
 
+.content {
+    max-width: 600px;
+}
+
 .content-container {
     margin-left: 200px;
 }
 
-.content {
-    max-width: 600px;
+.below-header {
+    margin-top: 54px;
 }
+
+.header {
+    height: 54px;
+}
+
