@@ -14,9 +14,9 @@
     </head>
 
     <body>
-        <main>
+        <main class="main-container relative">
             <!-- Left Sidebar -->
-            <div class="bg-red-300 border-r-2 p-2 sidebar h-full fixed">
+            <div class="bg-red-300 border-r-2 p-2 sidebar h-full fixed overflow-auto">
                 <div class="flex flex-col mr-2">
                     <div class="mb-2">
                         <a href="#">
@@ -96,9 +96,9 @@
             </div>
             <!-- End Left Sidebar -->
 
-            <div class="content flex">
+            <div class="content-container flex">
                 <!-- Middle Content -->
-                <div class="bg-blue-300 max-w-xl min-w-max">
+                <div class="bg-blue-300 content">
                     <div class="flex justify-between items-center border-b-2 p-3">
                         <span class="text-lg font-semibold">Home</span>
                         <span class="rounded-full hover:bg-gray-100 p-1">
@@ -495,8 +495,6 @@
                 </div>
                 <!-- End Right Sidebar -->
             </div>
-
-
         </main>
     </body>
 
