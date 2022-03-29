@@ -18,11 +18,19 @@
     margin-left: 200px;
 }
 
-.below-header {
-    margin-top: 54px;
+.border-right {
+    border-right: 1px solid #777;
 }
 
-.header {
-    height: 54px;
+.border-left {
+    border-left: 1px solid #777;
 }
 
+.border-bottom {
+    border-bottom: 1px solid #777;
+}
+
+.border-top {
+    border-top: 1px solid #777;
+
+}
