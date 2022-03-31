@@ -3,7 +3,8 @@ from masonite.authentication import Auth
 
 ROUTES = [
     # Home page
-    Route.get("/", "WelcomeController@show").name("welcome"),
+    # Route.get("/", "WelcomeController@show").name("welcome"),
+    Route.get("/", "HomeController@show"),
 
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),

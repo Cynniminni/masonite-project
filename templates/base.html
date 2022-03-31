@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+    {% import 'components.html' as components %}
     <header>
         <meta charset="UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Responsive Learning</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </header>
+    <title>{% block title %}{% endblock %}</title>
     <body
         class="flex justify-center mx-auto bg-red-100">
         <!-- main -->
@@ -86,7 +87,7 @@
 
             <!-- create post area -->
             <div class="bg-blue-400 p-2 gap-4 border-b-2 hidden md:mt-0 md:flex">
-                <img src="../storage/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
+                <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
                 <div
                     class="flex flex-col gap-2 w-full">
                     <!-- username info and timestamp -->
@@ -121,10 +122,11 @@
             </div>
             <!-- end create post area -->
 
+            <!-- Here is where the first post will go -->
             <div id="post-block" class="mt-14 md:mt-0">
                 <!-- post -->
                 <div class="bg-blue-300 p-2 flex gap-4 border-b-2 md:mt-0">
-                    <img src="../storage/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
+                    <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
                     <div
                         class="flex flex-col gap-2 w-full">
                         <!-- username info and timestamp -->
@@ -145,7 +147,7 @@
 
                         <!-- img body -->
                         <img
-                        src="../storage/static/pfp_sasuke.jpg" class="rounded-xl mt-2 mr-3">
+                        src="/static/pfp_sasuke.jpg" class="rounded-xl mt-2 mr-3">
 
                         <!-- buttons -->
                         <div class="flex justify-end gap-7 mt-2 mr-4">
@@ -163,6 +165,13 @@
                     </div>
                 </div>
                 <!-- end post -->
+                {{ components.post(
+                    nickname="WAO SUGOI~",
+                    handle="cynniminni",
+                    timestamp="3:06 pm",
+                    body="On this day, Cynni received a grim reminder...",
+                ) }}
+
             </div>
         </div>
         <!-- end main -->
@@ -229,6 +238,6 @@
         <!-- end sidebar -->
 
         <!-- app.js for the mobile menu -->
-        <script src="../storage/static/app.js"></script>
+        <script src="/static/app.js"></script>
     </body>
 </html>
