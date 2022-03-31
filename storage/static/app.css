@@ -1,0 +1,36 @@
+
+
+.main-container {
+    max-width: 1280px;
+}
+
+.sidebar {
+    width: 200px;
+    top: 0;
+    left: 0;
+}
+
+.content {
+    max-width: 600px;
+}
+
+.content-container {
+    margin-left: 200px;
+}
+
+.border-right {
+    border-right: 1px solid #777;
+}
+
+.border-left {
+    border-left: 1px solid #777;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #777;
+}
+
+.border-top {
+    border-top: 1px solid #777;
+
+}
