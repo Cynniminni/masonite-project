@@ -6,7 +6,13 @@ from masoniteorm.relationships import belongs_to
 
 class Post(Model):
     """Post Model"""
-    __fillable__ = ["title", "author_id", "body"]
+    __fillable__ = [
+        "title",
+        "author_id",
+        "body",
+        "friendly_date",
+        "friendly_time"
+    ]
 
     @belongs_to('author_id', 'id')
     def author(self):
