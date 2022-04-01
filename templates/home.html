@@ -6,9 +6,9 @@
 {% block content %}
     {% for post in posts %}
         {{ components.post(
-            nickname=post.author.name,
-            handle="PLACEHOLDER_HANDLE",
-            timestamp=post.created_at,
+            nickname=auth().nickname,
+            handle=auth().handle,
+            timestamp=post.friendly_date + " " + post.friendly_time,
             body=post.body
         ) }}
     {% endfor %}

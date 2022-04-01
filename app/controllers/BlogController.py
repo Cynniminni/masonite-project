@@ -9,6 +9,9 @@ class BlogController(Controller):
         return view.render("blog")
 
     def store(self, request: Request):
+        """
+        Get the user's input from the request object. This is coming from the <form> in blog.html.
+        """
         Post.create(
             title=request.input('title'),
             body=request.input('body'),
