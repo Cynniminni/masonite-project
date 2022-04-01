@@ -1,2 +1,15 @@
 {% extends "base.html" %}
+{% import 'components.html' as components %}
+
 {% block title %}Inkpad - Home{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        {{ components.post(
+            nickname=post.author.name,
+            handle="PLACEHOLDER_HANDLE",
+            timestamp=post.created_at,
+            body=post.body
+        ) }}
+    {% endfor %}
+{% endblock content %}
