@@ -5,7 +5,7 @@ ROUTES = [
     # Home page - Redirect to login page if user isn't logged in
     Route.get("/", "HomeController@show").middleware('auth').name("home"),
 
-    # User Profile - Show all posts from current authenticated user in desc created_at order
+    # User Profile - Show all posts from the given user handle in desc created_at order
     Route.get("/@handle", "ProfileController@show"),
 
     # Show a page with a form to create a single post
