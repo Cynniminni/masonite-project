@@ -7,12 +7,6 @@ import logging
 
 
 class PostController(Controller):
-    def show(self, view: View):
-        posts = Post.all()
-
-        # Render the view called posts.html and pass in the posts data
-        return view.render("posts", {'posts': posts})
-
     def single(self, view: View, request: Request):
         # Get parameters from the request
         user_handle = request.param("handle")
