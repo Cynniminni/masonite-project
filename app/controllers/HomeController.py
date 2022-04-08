@@ -19,10 +19,11 @@ class HomeController(Controller):
             'body', 
             'friendly_date', 
             'friendly_time'
+        ).order_by(
+            "posts.created_at",
+            "desc"
         ).get()
-
-        # all_posts = Post.where('author_id', request.user().id).get()
-        # all_posts = Post.all()        
+        
         all_posts = {
             'posts': all_posts
         }
