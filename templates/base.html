@@ -103,9 +103,13 @@
                     <!-- username info and timestamp -->
                     <div class="flex w-full">
                         <div class="flex gap-2 items-center">
-                            <span class="font-bold">{{ auth().nickname }}</span>
+                            <a href="/{{ auth().nickname }}" class="hover:underline">
+                                <span class="font-bold">{{ auth().nickname }}</span>
+                            </a>                            
                             <span>-</span>
-                            <span class="font-semibold">@{{ auth().handle }}</span>
+                            <a href="/{{ auth().handle }}" class="hover:underline">
+                                <span class="font-semibold">@{{ auth().handle }}</span>
+                            </a>
                         </div>
                     </div>
                     <!-- Text fields -->
