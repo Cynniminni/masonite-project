@@ -7,7 +7,6 @@ from masoniteorm.relationships import belongs_to
 class Post(Model):
     """Post Model"""
     __fillable__ = [
-        "title",
         "author_id",
         "body",
         "friendly_date",

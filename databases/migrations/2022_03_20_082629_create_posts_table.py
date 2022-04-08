@@ -9,7 +9,7 @@ class CreatePostsTable(Migration):
         Run the migrations.
         """
         with self.schema.create("posts") as table:
-            table.increments("id")
+            # table.increments("id")
             table.string("title")
 
             table.integer("author_id").unsigned()

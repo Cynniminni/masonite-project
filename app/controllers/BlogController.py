@@ -21,7 +21,6 @@ class BlogController(Controller):
         current_time = current_date_time.strftime(date_time_format)
 
         Post.create(
-            title=request.input('title'),
             body=request.input('body'),
             author_id=request.user().id,
             friendly_date=current_day,
