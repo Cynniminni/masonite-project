@@ -1,4 +1,3 @@
-import imp
 from masonite.controllers import Controller
 from masonite.views import View
 from masonite.request import Request
@@ -6,7 +5,7 @@ from masoniteorm.query import QueryBuilder
 
 
 class HomeController(Controller):
-    def show(self, view: View, request: Request):
+    def show(self, view: View):
         """
         Get all the posts and pass them to the home "/" page.
         """

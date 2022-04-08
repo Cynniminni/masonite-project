@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% import 'components.html' as components %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+    {% for post in all_users_post %}
+        {{ components.post(
+            nickname=post.nickname,
+            handle=post.handle,
+            timestamp=post.friendly_date + " " + post.friendly_time,
+            body=post.body
+        ) }}
+    {% endfor %}
+{% endblock content %}
