@@ -22,7 +22,7 @@ class UserTableSeeder(Seeder):
         User.create(
             {
                 "name": "SimpleAdmin",
-                "email": "radicalcyn@gmail.com",
+                "email": "simpleadmin@gmail.com",
                 "password": Hash.make("simpleadmin"),
                 "nickname": "Simple Admin",
                 "handle": "simple_admin"

@@ -1,14 +1,14 @@
 """UserTableSeeder Seeder."""
 from masoniteorm.seeds import Seeder
 from app.models.Post import Post
-import datetime
+from datetime import datetime
 
 
 class PostTableSeeder(Seeder):
     def run(self):
         """Run the database seeds."""
                 # Get the current date and time
-        current_date_time = datetime.now()
+        current_date_time = datetime.now()        
         date_time_format = "%b %d, %Y"
         current_day = current_date_time.strftime(date_time_format)
         date_time_format = "%I:%M %p"
