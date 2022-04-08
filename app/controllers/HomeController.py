@@ -16,6 +16,7 @@ class HomeController(Controller):
         builder = QueryBuilder().table("posts")
         builder = builder.join('users', 'posts.author_id', '=', 'users.id')
         all_posts = builder.table('posts').select(
+            'post_id',
             'users.nickname',
             'users.handle',
             'body', 

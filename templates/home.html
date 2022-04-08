@@ -9,7 +9,8 @@
             nickname=post.nickname,
             handle=post.handle,
             timestamp=post.friendly_date + " " + post.friendly_time,
-            body=post.body
+            body=post.body,
+            post_id=post.post_id
         ) }}
     {% endfor %}
 {% endblock content %}

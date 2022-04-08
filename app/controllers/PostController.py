@@ -38,7 +38,8 @@ class PostController(Controller):
 
         single_post = single_post.get()
         single_post = {
-            "single_post": single_post
+            "single_post": single_post,
+            "post_id": post_id
         }
         print(f"single_post = {single_post}")
 

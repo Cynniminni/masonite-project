@@ -1,4 +1,4 @@
-{% macro post(nickname, handle, timestamp, body) -%}
+{% macro post(nickname, handle, timestamp, body, post_id) -%}
     <!-- post -->
     <div class="bg-blue-300 p-2 flex gap-4 border-b-2 md:mt-0">
         <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
@@ -16,7 +16,9 @@
                         </a>
 
                         <span>-</span>
-                        <span>{{ timestamp }}</span>
+                        <a href="/{{ handle }}/status/{{ post_id }}" class="hover:underline">
+                            <span>{{ timestamp }}</span>
+                        </a>
                     </div>
                 </div>
 
