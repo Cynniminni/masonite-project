@@ -1,10 +1,12 @@
 from masonite.controllers import Controller
 from masonite.views import View
 from app.models.Post import Post
+from masonite.request import Request
+from masonite.routes import Route
 
 
 class HomeController(Controller):
-    def show(self, view: View):
+    def show(self, view: View, request: Request):
         """
         Get all the posts and pass them to the home "/" page.
         """
