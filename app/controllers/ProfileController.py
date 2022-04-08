@@ -9,8 +9,13 @@ class ProfileController(Controller):
         """
         Display the profile page of the given user handle, and list their posts in descending order by posts.created_at.
         """
+        controller_method = "ProfileController@show"
+        print("----------------")
+        print(f"{controller_method}")
+        print("----------------")
         # Get handle of the user
         user_handle = request.param("handle")
+        print(f"user_handle = {user_handle}")
 
         # Get all posts belonging to the current authenticated user
         builder = QueryBuilder().table("posts")

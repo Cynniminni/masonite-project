@@ -18,7 +18,10 @@ class PostController(Controller):
         user_handle = request.param("handle")
         post_id = request.param("post_id")
         controller_method = "PostController@single"
-        print(f"{controller_method} - user_handle: {user_handle}, post_id: {post_id}")
+        print("----------------")
+        print(f"{controller_method}")
+        print("----------------")
+        print(f"user_handle = {user_handle}, post_id: {post_id}")
 
         # Query posts table to get the post by post_id
         builder = QueryBuilder().table("posts")
@@ -37,13 +40,13 @@ class PostController(Controller):
             "post_id",
             post_id
         )
-        print(f"single_post SQL: {single_post.to_sql()}")
+        print(f"SQL = {single_post.to_sql()}")
 
         single_post = single_post.get()
         single_post = {
             "single_post": single_post
         }
-        print(f"{controller_method} - single_post: {single_post}")
+        print(f"single_post = {single_post}")
 
         return view.render("single_post", single_post)
 

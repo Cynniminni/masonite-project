@@ -8,6 +8,10 @@ class HomeController(Controller):
         """
         Get all the posts and pass them to the home "/" page.
         """
+        controller_method = "HomeController@show"
+        print("----------------------")
+        print(f"{controller_method}")
+        print("----------------------")
         # Get all posts belonging to the current authenticated user
         builder = QueryBuilder().table("posts")
         builder = builder.join('users', 'posts.author_id', '=', 'users.id')
