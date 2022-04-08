@@ -6,6 +6,8 @@ from masoniteorm.relationships import belongs_to
 
 class Post(Model):
     """Post Model"""
+    __primary_key__ = "post_id"
+
     __fillable__ = [
         "author_id",
         "body",
