@@ -1,6 +1,7 @@
 """ User Model """
 
 from masoniteorm.models import Model
+from masoniteorm.relationships import belongs_to
 
 
 class Following(Model):
