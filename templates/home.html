@@ -4,6 +4,10 @@
 {% block title %}Inkpad - Home{% endblock %}
 
 {% block content %}
+    {{ components.post_area(auth=auth(),
+                            csrf_field=csrf_field
+    ) }}
+
     {% for post in posts %}
         {{ components.post(
             nickname=post.nickname,
