@@ -11,6 +11,6 @@ class PostTableSeeder(Seeder):
         Post.create({
             "author_id": 1,
             "body": "This is a seeded post",
-            "friendly_date": "Apr 7, 2022",
+            "friendly_date": "Apr 07, 2022",
             "friendly_time": "8:20PM"
         })
