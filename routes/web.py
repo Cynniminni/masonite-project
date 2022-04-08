@@ -6,10 +6,7 @@ ROUTES = [
     Route.get("/", "HomeController@show").middleware('auth').name("home"),
 
     # User Profile - Show all posts from current authenticated user in desc created_at order
-    Route.get("/profile", "ProfileController@show"),
-
-    # Other User's Profile - Show user profile based on the handle name passed in the url
-    Route.get("/profile/@handle", "ProfileController@show_other_user_profile"),
+    Route.get("/@handle", "ProfileController@show"),
 
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
