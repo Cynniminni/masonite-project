@@ -6,8 +6,8 @@
 {% block content %}
     {% for post in posts %}
         {{ components.post(
-            nickname=auth().nickname,
-            handle=auth().handle,
+            nickname=post.nickname,
+            handle=post.handle,
             timestamp=post.friendly_date + " " + post.friendly_time,
             body=post.body
         ) }}

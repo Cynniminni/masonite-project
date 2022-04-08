@@ -1,8 +1,8 @@
+import imp
 from masonite.controllers import Controller
 from masonite.views import View
-from app.models.Post import Post
-from app.models.User import User
 from masonite.request import Request
+from masoniteorm.query import QueryBuilder
 
 
 class HomeController(Controller):
@@ -11,7 +11,18 @@ class HomeController(Controller):
         Get all the posts and pass them to the home "/" page.
         """
         # Get all posts belonging to the current authenticated user
-        all_posts = Post.where('author_id', request.user().id).get()
+        builder = QueryBuilder().table("posts")
+        builder = builder.join('users', 'posts.author_id', '=', 'users.id')
+        all_posts = builder.table('posts').select(
+            'users.nickname',
+            'users.handle',
+            'body', 
+            'friendly_date', 
+            'friendly_time'
+        ).get()
+
+        # all_posts = Post.where('author_id', request.user().id).get()
+        # all_posts = Post.all()        
         all_posts = {
             'posts': all_posts
         }
