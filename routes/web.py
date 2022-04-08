@@ -3,7 +3,7 @@ from masonite.authentication import Auth
 
 ROUTES = [
     # Home page - Redirect to login page if user isn't logged in
-    Route.get("/", "HomeController@show").middleware('auth'),
+    Route.get("/", "HomeController@show").middleware('auth').name("home"),
 
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
