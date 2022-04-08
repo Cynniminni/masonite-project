@@ -14,7 +14,7 @@ class AddPostIdToPostsTable(Migration):
 
         with self.schema.create("posts") as table:
             # Recreate the posts table with the post_id as the primary key
-            table.increments("post_id").primary().unique()
+            table.increments("post_id").unique().primary()
             table.integer("author_id").unsigned()
             table.foreign("author_id").references("id").on("users")
             table.string("body")

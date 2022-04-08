@@ -3,6 +3,7 @@ from masonite.views import View
 from app.models.Post import Post
 from masonite.request import Request
 from masoniteorm.query import QueryBuilder
+import logging
 
 
 class PostController(Controller):
@@ -16,11 +17,14 @@ class PostController(Controller):
         # Get parameters from the request
         user_handle = request.param("handle")
         post_id = request.param("post_id")
+        controller_method = "PostController@single"
+        print(f"{controller_method} - user_handle: {user_handle}, post_id: {post_id}")
 
         # Query posts table to get the post by post_id
         builder = QueryBuilder().table("posts")
         builder = builder.join("users", "posts.author_id", "=", "users.id")
         single_post = builder.table("posts").select(
+            "post_id",
             "users.nickname",
             "users.handle",
             "body",
@@ -32,11 +36,14 @@ class PostController(Controller):
         ).where(
             "post_id",
             post_id
-        ).get()
+        )
+        print(f"single_post SQL: {single_post.to_sql()}")
 
+        single_post = single_post.get()
         single_post = {
             "single_post": single_post
         }
+        print(f"{controller_method} - single_post: {single_post}")
 
         return view.render("single_post", single_post)
 

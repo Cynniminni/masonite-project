@@ -14,7 +14,7 @@ class PostTableSeeder(Seeder):
         date_time_format = "%I:%M %p"
         current_time = current_date_time.strftime(date_time_format)
 
-        for i in range(10):
+        for i in range(1, 10):
             # Refresh time
             current_time = current_date_time.strftime(date_time_format)
 
