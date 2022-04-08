@@ -7,7 +7,9 @@
                 <!-- username info and timestamp -->
                 <div class="flex w-full">
                     <div class="flex gap-2 items-center">
-                        <span class="font-bold">{{ nickname }}</span>
+                        <a href="/profile/{{ handle }}" class="hover:underline">
+                            <span class="font-bold">{{ nickname }}</span>
+                        </a>
                         <span>-</span>
                         <a href="/profile/{{ handle }}" class="hover:underline">
                             <span class="font-semibold">@{{ handle }}</span>
