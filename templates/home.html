@@ -4,6 +4,12 @@
 {% block title %}Inkpad - Home{% endblock %}
 
 {% block content %}
+    <!-- profile area -->
+    <div class="bg-blue-300 p-2 flex gap-4 border-b-2 md:mt-0">
+        <img src="/static/pfp_generic_user.png" class="w-32 h-32 object-cover rounded-full">
+    </div>
+    <!-- end profile area -->
+
     {{ components.post_area(auth=auth(),
                             csrf_field=csrf_field
     ) }}
