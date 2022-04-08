@@ -1,6 +1,5 @@
 from masonite.controllers import Controller
 from masonite.views import View
-from masonite.request import Request
 from masoniteorm.query import QueryBuilder
 
 
@@ -26,6 +25,8 @@ class HomeController(Controller):
         all_posts = {
             'posts': all_posts
         }
+
+        print(f"all_posts: {all_posts}")
 
         # Render the view called posts.html and pass in the posts data
         return view.render("home", all_posts)

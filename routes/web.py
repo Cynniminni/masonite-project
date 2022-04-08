@@ -8,6 +8,9 @@ ROUTES = [
     # User Profile - Show all posts from the given user handle in desc created_at order
     Route.get("/@handle", "ProfileController@show"),
 
+    # Show a single post
+    Route.get("/@handle/status/@post_id", "PostController@single"),
+
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
 
