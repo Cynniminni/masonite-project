@@ -4,6 +4,8 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
+    {{ components.profile_area() }}
+
     {% for post in all_users_post %}
         {{ components.post(
             nickname=post.nickname,
