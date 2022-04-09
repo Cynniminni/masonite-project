@@ -1,6 +1,6 @@
 {% macro post(nickname, handle, timestamp, body, post_id) -%}
 <!-- post -->
-<div class="p-3 flex gap-4 border-b-2 md:mt-0">
+<div class="p-3 flex gap-4 md:mt-0">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -53,7 +53,7 @@
 
 {% macro post_area(auth, csrf_field) %}
 <!-- create post area -->
-<div class="p-2 gap-4 border-b-2 hidden md:mt-0 md:flex">
+<div class="p-2 gap-4 hidden md:mt-0 md:flex">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
