@@ -1,7 +1,6 @@
 {% macro post(nickname, handle, timestamp, body, post_id) -%}
 <!-- post -->
-<div class="p-3 flex gap-4 md:mt-0"
-    style="border-top: 1px solid #334155">
+<div class="p-3 flex gap-4 md:mt-0" style="border-top: 1px solid #334155">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -73,7 +72,12 @@
         <form action="/blog/create" method="POST">
             {{ csrf_field }}
             <div class="flex flex-col gap-2 mb-2">
-                <input type="text" name="body" class="p-3 bg-transparent" placeholder="What's happening?">
+                <textarea name="body" 
+                    class="p-3 bg-transparent resize-y"
+                    rows="2"
+                    placeholder="What's happening?"
+                    wrap="hard"></textarea>
+                <!-- <input type="text" name="body" class="p-3 bg-transparent" placeholder="What's happening?"> -->
             </div>
             <!-- Buttons -->
             <div class="flex justify-between items-center">
