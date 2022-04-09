@@ -4,7 +4,80 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    {{ components.profile_area() }}
+    <!-- profile area -->
+<div class="bg-blue-300 border-b-2 md:mt-0">
+    <!-- Banner -->
+    <img src="/static/banner_leaves.jpg" class="object-cover w-full h-56">
+
+    <!-- Container for padding -->
+    <div class="p-3 flex-col space-y-3 -mt-20">
+        <!-- Avatar and buttons container -->
+        <div class="flex justify-between items-center">
+            <!-- Avatar -->
+            <img src="/static/pfp_generic_user.png"
+                class="ml-2 w-32 h-32 object-cover rounded-full border-blue-300 border-8 box-content">
+            <!-- Buttons -->
+            <div class="flex mt-14 mr-2 space-x-2">
+                <a href="#" class="border py-1 px-3 rounded-full">
+                    ···
+                </a>
+                <a href="#" class="border py-1 px-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                </a>
+                <a href="#" class="border py-1 px-2 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                </a>
+                <a href="#" class="border py-1 px-3 rounded-full font-bold">
+                    Follow
+                </a>
+            </div>
+        </div>
+
+        <!-- Info -->
+        <div>
+            <p class="font-bold text-xl">Cynni 🐶 🍡💕 Endwalker Spoilers | WAO SUGOI</p>
+            <div class="flex gap-2 items-center">
+                <p>@cynniminnii</p>
+                <p class="text-sm">Follows you</p>
+            </div>
+        </div>
+
+        <!-- Bio -->
+        <p>Cynni | 25f+ | Eng/日本語（少し） | ShiIta・シスイタ | FFXIV・FF14 | Shop: http://cynniminni.com |
+            http://etsy.com/shop/Cynniminni | Art thread in pinned!</p>
+
+        <!-- Joined Date -->
+        <p class="flex gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            Joined October 2015
+        </p>
+
+        <!-- Following / Follower -->
+        <div class="flex gap-5">
+            <div class="flex gap-1">
+                <p class="font-bold">593</p>
+                <p>Following</p>
+            </div>
+            <div class="flex gap-1">
+                <p class="font-bold">1892</p>
+                <p>Followers</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end profile area -->
 
     {% for post in all_users_post %}
         {{ components.post(

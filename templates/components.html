@@ -1,6 +1,6 @@
 {% macro post(nickname, handle, timestamp, body, post_id) -%}
 <!-- post -->
-<div class="bg-blue-300 p-3 flex gap-4 border-b-2 md:mt-0">
+<div class="p-3 flex gap-4 border-b-2 md:mt-0">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -53,7 +53,7 @@
 
 {% macro post_area(auth, csrf_field) %}
 <!-- create post area -->
-<div class="bg-blue-400 p-2 gap-4 border-b-2 hidden md:mt-0 md:flex">
+<div class="p-2 gap-4 border-b-2 hidden md:mt-0 md:flex">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -116,9 +116,9 @@
         <div class="flex justify-between items-center">
             <!-- Avatar -->
             <img src="/static/pfp_generic_user.png"
-                class="ml-2 w-32 h-32 object-cover rounded-full border-blue-500 border-8 box-content">
+                class="ml-2 w-32 h-32 object-cover rounded-full border-blue-300 border-8 box-content">
             <!-- Buttons -->
-            <div class="flex mt-14 mr-2">
+            <div class="flex mt-14 mr-2 space-x-2">
                 <a href="#" class="border py-1 px-3 rounded-full">
                     ···
                 </a>
@@ -136,7 +136,7 @@
                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
                 </a>
-                <a href="#" class="border py-1 px-3 rounded-full">
+                <a href="#" class="border py-1 px-3 rounded-full font-bold">
                     Follow
                 </a>
             </div>
