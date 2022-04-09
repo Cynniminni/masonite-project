@@ -1,6 +1,6 @@
 {% macro post(nickname, handle, timestamp, body, post_id) -%}
 <!-- post -->
-<div class="p-3 flex gap-4 md:mt-0" style="border-top: 1px solid #334155">
+<div class="p-3 flex gap-4 hover:bg-slate-800 transition md:mt-0" style="border-top: 1px solid #334155">
     <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -59,7 +59,7 @@
         <!-- username info and timestamp -->
         <div class="flex w-full">
             <div class="flex gap-2 items-center">
-                <a href="/{{ auth.nickname }}" class="hover:underline">
+                <a href="/{{ auth.handle }}" class="hover:underline">
                     <span class="font-bold">{{ auth.nickname }}</span>
                 </a>
                 <span>-</span>
