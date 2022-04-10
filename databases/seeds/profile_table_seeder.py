@@ -12,9 +12,9 @@ class ProfileTableSeeder(Seeder):
         Profile.create(
             {
                 "user_id": 1,
-                "nickname": "PLACEHOLDER_NICKNAME",
+                "nickname": "Masonite Admin",
                 "handle": "admin",
-                "bio": "PLACEHOLDER_BIO",
+                "bio": "The admin for this Masonite project, who calls the shots here.",
                 "picture": "/static/pfp_generic_user.png",
                 "banner": "/static/banner_leaves.jpg"
             }
@@ -24,9 +24,9 @@ class ProfileTableSeeder(Seeder):
         Profile.create(
             {
                 "user_id": 2,
-                "nickname": "PLACEHOLDER_NICKNAME",
+                "nickname": "Cynniminni <3",
                 "handle": "cynniminni",
-                "bio": "PLACEHOLDER_BIO",
+                "bio": "An example user, using my own social media as an example.",
                 "picture": "/static/pfp_generic_user.png",
                 "banner": "/static/banner_leaves.jpg"
             }
