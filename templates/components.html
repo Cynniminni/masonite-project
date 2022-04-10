@@ -84,25 +84,28 @@
 <!-- end post -->
 {%- endmacro %}
 
-{% macro post_area(auth, csrf_field) %}
+{% macro post_area(csrf_field, current_user) %}
 <!-- create post area -->
 <div class="p-2 gap-4 hidden md:mt-0 md:flex" style="border-top: 1px solid #334155">
-    <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
+    <a href="/{{ current_user.handle }}">
+        <img src="{{ current_user.picture }}" class="w-14 h-14 object-cover rounded-full">
+    </a>
+    
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
         <div class="flex w-full">
             <div class="flex gap-2 items-center">
-                <a href="/{{ auth.handle }}" class="hover:underline">
-                    <span class="font-bold">{{ auth.nickname }}</span>
+                <a href="/{{ current_user.nickname }}" class="hover:underline">
+                    <span class="font-bold">{{ current_user.nickname }}</span>
                 </a>
                 <span>-</span>
-                <a href="/{{ auth.handle }}" class="hover:underline">
-                    <span class="text-sm text-slate-500">@{{ auth.handle }}</span>
+                <a href="/{{ current_user.handle }}" class="hover:underline">
+                    <span class="text-sm text-slate-500">@{{ current_user.handle }}</span>
                 </a>
             </div>
         </div>
         <!-- Text fields -->
-        <form action="/{{ auth.handle }}/post/create" method="POST">
+        <form action="/{{ current_user.handle }}/post/create" method="POST">
             {{ csrf_field }}
             <div class="flex flex-col gap-2 mb-2">
                 <textarea id="text-area" name="body" class="p-3 bg-transparent resize-y" rows="2"

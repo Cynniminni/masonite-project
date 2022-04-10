@@ -4,8 +4,9 @@
 {% block title %}Inkpad - Home{% endblock %}
 
 {% block content %}
-    {{ components.post_area(auth=auth(),
-        csrf_field=csrf_field
+    {{ components.post_area(
+        csrf_field=csrf_field,
+        current_user=current_user
     ) }}
 
     {% for post in posts %}
