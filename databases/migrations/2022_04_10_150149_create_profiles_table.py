@@ -14,7 +14,7 @@ class CreateProfilesTable(Migration):
             table.foreign("user_id").references("id").on("users")
 
             table.string("nickname")
-            table.string("handle")
+            table.string("handle").unique()
             table.string("bio")  # description
             table.string("picture")  # profile picture
             table.string("banner")  # profile banner
