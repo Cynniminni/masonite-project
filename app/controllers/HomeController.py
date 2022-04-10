@@ -12,7 +12,7 @@ class HomeController(Controller):
         print("----------------------")
         print(f"{controller_method}")
         print("----------------------")
-        # Get all posts belonging to the current authenticated user
+        # Get all posts in the database
         builder = QueryBuilder().table("posts")
         builder = builder.join('users', 'posts.author_id', '=', 'users.id')
         all_posts = builder.table('posts').select(

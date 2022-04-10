@@ -48,10 +48,12 @@ class PostController(Controller):
 
         return view.render("single_post", single_post)
 
-    def store(self, request: Request):
+    def store(self, view: View, request: Request):
         """
         Get the user's input from the request object. This is coming from the <form> in blog.html.
         """
+        # TODO: Verify request user is authenticated
+
         # Get the current date and time
         current_date_time = datetime.now()
         date_time_format = "%b %d, %Y"
@@ -59,6 +61,7 @@ class PostController(Controller):
         date_time_format = "%I:%M %p"
         current_time = current_date_time.strftime(date_time_format)
 
+        # Create the post
         Post.create(
             body=request.input('body'),
             author_id=request.user().id,
@@ -66,7 +69,27 @@ class PostController(Controller):
             friendly_time=current_time,
         )
 
-        return f"Post Created for @{request.user().handle} at {current_day} {current_time}"
+        # Get all posts in the database
+        builder = QueryBuilder().table("posts")
+        builder = builder.join('users', 'posts.author_id', '=', 'users.id')
+        all_posts = builder.table('posts').select(
+            'post_id',
+            'users.nickname',
+            'users.handle',
+            'body', 
+            'friendly_date', 
+            'friendly_time'
+        ).order_by(
+            "posts.created_at",
+            "desc"
+        ).get()
+        
+        all_posts = {
+            'posts': all_posts
+        }
+
+        # TODO: Redirect to home page if creating post is successful
+        return view.render("home", all_posts)
 
     def update(self, view: View, request: Request):
         post = Post.find(request.param('id'))
@@ -74,6 +97,9 @@ class PostController(Controller):
         return view.render('update', {'post': post})
 
     def delete(self, request: Request):
+        """
+        Delete a single post
+        """
         post = Post.find(request.param('id'))
         post.delete()
         return 'post deleted'

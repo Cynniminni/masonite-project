@@ -17,6 +17,9 @@ ROUTES += [
     # Create a post
     Route.post("/@handle/post/create", "PostController@store"),
 
+    # Delete a post
+    Route.post("/@handle/post/delete", "PostController@delete"),
+
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
 
