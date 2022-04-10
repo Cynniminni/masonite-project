@@ -1,3 +1,4 @@
+from distutils.command.build import build
 from masonite.controllers import Controller
 from masonite.views import View
 from masoniteorm.query import QueryBuilder
@@ -14,11 +15,11 @@ class HomeController(Controller):
         print("----------------------")
         # Get all posts in the database
         builder = QueryBuilder().table("posts")
-        builder = builder.join('users', 'posts.author_id', '=', 'users.id')
+        builder = builder.join('users', 'posts.user_id', '=', 'users.id')
+        builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')     
         all_posts = builder.table('posts').select(
-            'post_id',
-            'users.nickname',
-            'users.handle',
+            'profiles.nickname',
+            'profiles.handle',            
             'body', 
             'friendly_date', 
             'friendly_time'
