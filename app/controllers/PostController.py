@@ -3,11 +3,14 @@ from masonite.views import View
 from app.models.Post import Post
 from masonite.request import Request
 from masoniteorm.query import QueryBuilder
-import logging
+from datetime import datetime
 
 
 class PostController(Controller):
     def single(self, view: View, request: Request):
+        """
+        Display a single post from a user.
+        """
         # Get parameters from the request
         user_handle = request.param("handle")
         post_id = request.param("post_id")
@@ -45,23 +48,30 @@ class PostController(Controller):
 
         return view.render("single_post", single_post)
 
-    # def single(self, view: View, request: Request):
-    #     post = Post.find(request.param('id'))
-    #
-    #     # Render the view called single.html and pass in the post data
-    #     return view.render("single", {"post": post})
+    def store(self, request: Request):
+        """
+        Get the user's input from the request object. This is coming from the <form> in blog.html.
+        """
+        # Get the current date and time
+        current_date_time = datetime.now()
+        date_time_format = "%b %d, %Y"
+        current_day = current_date_time.strftime(date_time_format)
+        date_time_format = "%I:%M %p"
+        current_time = current_date_time.strftime(date_time_format)
+
+        Post.create(
+            body=request.input('body'),
+            author_id=request.user().id,
+            friendly_date=current_day,
+            friendly_time=current_time,
+        )
+
+        return f"Post Created for @{request.user().handle} at {current_day} {current_time}"
 
     def update(self, view: View, request: Request):
         post = Post.find(request.param('id'))
 
         return view.render('update', {'post': post})
-
-    def store(self, request: Request):
-        post = Post.find(request.param('id'))
-        post.title = request.input('title')
-        post.body = request.input('body')
-        post.save()
-        return 'post updated'
 
     def delete(self, request: Request):
         post = Post.find(request.param('id'))

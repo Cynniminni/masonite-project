@@ -14,11 +14,11 @@ ROUTES += [
     # Show a single post
     Route.get("/@handle/post/@post_id", "PostController@single"),
 
+    # Create a post
+    Route.post("/@handle/post/create", "PostController@store"),
+
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
-
-    # Create a post
-    Route.post("/blog/create", "BlogController@store"),
 
     # Show a single post
     Route.get("/post/@id", "PostController@single"),

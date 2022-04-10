@@ -102,7 +102,7 @@
             </div>
         </div>
         <!-- Text fields -->
-        <form action="/blog/create" method="POST">
+        <form action="/{{ auth.handle }}/post/create" method="POST">
             {{ csrf_field }}
             <div class="flex flex-col gap-2 mb-2">
                 <textarea id="text-area" name="body" class="p-3 bg-transparent resize-y" rows="2"
