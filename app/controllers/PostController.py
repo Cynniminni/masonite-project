@@ -22,19 +22,19 @@ class PostController(Controller):
 
         # Query posts table to get the post by post_id
         builder = QueryBuilder().table("posts")
-        builder = builder.join("users", "posts.author_id", "=", "users.id")
+        builder = builder.join("profiles", "posts.user_id", "=", "profiles.user_id")
         single_post = builder.table("posts").select(
-            "post_id",
-            "users.nickname",
-            "users.handle",
+            "posts.id",
+            "profiles.nickname",
+            "profiles.handle",
             "body",
             "friendly_date",
             "friendly_time"
         ).where(
-            "users.handle",
+            "profiles.handle",
             user_handle
         ).where(
-            "post_id",
+            "posts.id",
             post_id
         )
         print(f"SQL = {single_post.to_sql()}")
