@@ -15,9 +15,9 @@ class HomeController(Controller):
         print("----------------------")
         # Get all posts in the database
         builder = QueryBuilder().table("posts")
-        builder = builder.join('users', 'posts.user_id', '=', 'users.id')
         builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')     
         all_posts = builder.table('posts').select(
+            'id',
             'profiles.nickname',
             'profiles.handle',            
             'body', 
