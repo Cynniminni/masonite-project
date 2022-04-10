@@ -7,6 +7,12 @@ from masonite.authentication import Authenticates
 class User(Model, SoftDeletesMixin, Authenticates):
     """User Model."""
 
-    __fillable__ = ["name", "email", "password"]
+    __fillable__ = [
+        "name", 
+        "email", 
+        "password", 
+        "nickname", 
+        "handle"
+    ]
     __hidden__ = ["password"]
     __auth__ = "email"

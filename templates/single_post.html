@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import 'components.html' as components %}
+
+{% block title %}Single Post{% endblock %}
+
+{% block content %}
+    {% for post in single_post %}
+        {{ components.post(
+            nickname=post.nickname,
+            handle=post.handle,
+            timestamp=post.friendly_date + " " + post.friendly_time,
+            body=post.body,
+            post_id=post.post_id
+        ) }}
+    {% endfor %}
+{% endblock content %}

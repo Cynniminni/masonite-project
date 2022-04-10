@@ -4,18 +4,16 @@ from masoniteorm.models import Model
 from masoniteorm.relationships import belongs_to
 
 
-class Post(Model):
-    """Post Model"""
-    __primary_key__ = "post_id"
-
+class Following(Model):
+    """Following Model"""
     __fillable__ = [
-        "author_id",
-        "body",
-        "friendly_date",
-        "friendly_time"
+        "user_id",
+        "following_id",
+        "following_handle",
+        "following_nickname"
     ]
 
-    @belongs_to('author_id', 'id')
+    @belongs_to('user_id', 'id')
     def author(self):
         from app.models.User import User
         return User
