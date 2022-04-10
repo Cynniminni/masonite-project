@@ -1,7 +1,10 @@
 from masonite.routes import Route
 from masonite.authentication import Auth
 
-ROUTES = [
+# Add Auth routes first, otherwise the /@handle route will break and keep overriding the /logout route, among others
+ROUTES = Auth.routes()
+
+ROUTES += [
     # Home page - Redirect to login page if user isn't logged in
     Route.get("/", "HomeController@show").middleware('auth').name("home"),
 
@@ -30,4 +33,4 @@ ROUTES = [
     Route.get('post/@id/delete', 'PostController@delete')
 ]
 
-ROUTES += Auth.routes()
+
