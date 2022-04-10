@@ -12,7 +12,7 @@ ROUTES += [
     Route.get("/@handle", "ProfileController@show"),
 
     # Show a single post
-    Route.get("/@handle/status/@post_id", "PostController@single"),
+    Route.get("/@handle/post/@post_id", "PostController@single"),
 
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),
