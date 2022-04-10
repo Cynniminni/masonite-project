@@ -13,18 +13,14 @@ class UserTableSeeder(Seeder):
             {
                 "name": "Admin",
                 "email": "radicalcyn@gmail.com",
-                "password": Hash.make("MasoniteAdmin2022!!"),
-                "nickname": "Masonite Admin",
-                "handle": "admin"
+                "password": Hash.make("MasoniteAdmin2022!!")
             }
         )
         
         User.create(
             {
-                "name": "SimpleAdmin",
-                "email": "simpleadmin@gmail.com",
-                "password": Hash.make("simpleadmin"),
-                "nickname": "Simple Admin",
-                "handle": "simple_admin"
+                "name": "cynniminni",
+                "email": "cynniminni@gmail.com",
+                "password": Hash.make("cynniminni")
             }
         )

@@ -19,7 +19,7 @@ class PostTableSeeder(Seeder):
             current_time = current_date_time.strftime(date_time_format)
 
             if i % 2:
-                author_id = 2  # simple_admin
+                author_id = 2  # cynniminni
             else:
                 author_id = 1  # admin
 
