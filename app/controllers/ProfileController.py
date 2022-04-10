@@ -33,7 +33,19 @@ class ProfileController(Controller):
             "posts.created_at",
             "desc"
         ).get()
+
+        # Get given users's nickname
+        builder = QueryBuilder().table("users")
+        nickname = builder.table("users").select(
+            "nickname"
+        ).where(
+            "users.handle",
+            user_handle
+        ).get()
+
         all_users_posts = {
-            'all_users_post': all_users_posts
+            'all_users_post': all_users_posts,
+            'nickname': nickname.first()['nickname'],
+            'handle': user_handle
         }
         return view.render("profile", all_users_posts)
