@@ -9,8 +9,19 @@ class CreateRepliesTable(Migration):
         Run the migrations.
         """
         with self.schema.create("replies") as table:
-            table.increments("id")
+            # Primary key
+            table.increments("id").unique().primary()
+            
+            # Foreign key
+            table.integer("comment_id").unsigned()
+            table.foreign("comment_id").references("id").on("comments")
+            
+            # Reply id, if it is a reply to a reply
+            table.integer("replied_to_id").nullable()
 
+            # User who replied
+            table.integer("user_replied_id").unsigned()
+            table.string("user_replied_body")
             table.timestamps()
 
     def down(self):

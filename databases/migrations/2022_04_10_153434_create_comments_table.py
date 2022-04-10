@@ -9,8 +9,16 @@ class CreateCommentsTable(Migration):
         Run the migrations.
         """
         with self.schema.create("comments") as table:
-            table.increments("id")
+            # Primary key
+            table.increments("id").unique().primary()
 
+            # Foreign key
+            table.integer("post_id").unsigned()
+            table.foreign("post_id").references("id").on("posts")
+
+            # User who commented
+            table.integer("user_id").unsigned()
+            table.string("body")
             table.timestamps()
 
     def down(self):

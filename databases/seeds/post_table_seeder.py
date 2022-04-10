@@ -18,13 +18,15 @@ class PostTableSeeder(Seeder):
             # Refresh time
             current_time = current_date_time.strftime(date_time_format)
 
-            if i % 2:
-                author_id = 2  # cynniminni
-            else:
-                author_id = 1  # admin
+            Post.create({
+                "user_id": 1,
+                "body": f"This is a seeded post: {i}",
+                "friendly_date": current_day,
+                "friendly_time": current_time
+            })
 
             Post.create({
-                "author_id": author_id,
+                "user_id": 2,
                 "body": f"This is a seeded post: {i}",
                 "friendly_date": current_day,
                 "friendly_time": current_time

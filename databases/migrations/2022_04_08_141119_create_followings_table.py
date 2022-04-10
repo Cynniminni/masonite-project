@@ -9,6 +9,7 @@ class CreateFollowingsTable(Migration):
         Run the migrations.
         """
         with self.schema.create("followings") as table:
+            table.increments("id").unique()
             table.integer("user_id").unsigned()
             table.foreign("user_id").references("id").on("users")        
             table.integer("following_id")
