@@ -19,33 +19,40 @@ class ProfileController(Controller):
 
         # Get all posts belonging to the current authenticated user
         builder = QueryBuilder().table("posts")
-        builder = builder.join('users', 'posts.author_id', '=', 'users.id')
+        builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')
         all_users_posts = builder.table('posts').select(
-            "users.nickname",
-            "users.handle",
+            "id",
+            "profiles.nickname",
+            "profiles.handle",
             "body",
             "friendly_date",
             "friendly_time"
         ).where(
-            "users.handle",
+            "profiles.handle",
             user_handle
         ).order_by(
             "posts.created_at",
             "desc"
         ).get()
 
-        # Get given users's nickname
-        builder = QueryBuilder().table("users")
-        nickname = builder.table("users").select(
-            "nickname"
+        # Get the current user profile info
+        current_user_id = request.user().id
+        builder = QueryBuilder().table("profiles")
+        builder = builder.join("users", "profiles.user_id", "=", "users.id")
+        current_user = builder.table("profiles").select(
+            'nickname',
+            'handle',
+            'picture',
+            'banner'
         ).where(
-            "users.handle",
-            user_handle
-        ).get()
+            'user_id',
+            current_user_id
+        ).get().first()
 
-        all_users_posts = {
+        data = {
             'all_users_post': all_users_posts,
-            'nickname': nickname.first()['nickname'],
-            'handle': user_handle
+            # 'nickname': nickname.first()['nickname'],
+            'handle': user_handle,
+            "current_user": current_user
         }
-        return view.render("profile", all_users_posts)
+        return view.render("profile", data)

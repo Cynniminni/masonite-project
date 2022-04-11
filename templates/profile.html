@@ -4,21 +4,20 @@
 {% block title %}Profile{% endblock %}
 
 {% block content %}
-    <!-- profile area -->
+<!-- profile area -->
 <div class="md:mt-0">
     <!-- Banner -->
-    <img src="/static/banner_leaves.jpg" 
-    class="object-cover w-full h-56">
+    <img src="{{ current_user.banner }}" class="object-cover w-full h-56">
 
     <!-- Container for padding -->
     <div class="p-3 flex-col space-y-3 -mt-20">
         <!-- Avatar and buttons container -->
         <div class="flex justify-between items-center">
             <!-- Avatar -->
-            <img src="/static/pfp_generic_user.png"
+            <img src="{{ current_user.picture }}"
                 class="ml-2 w-32 h-32 object-cover rounded-full border-slate-900 border-8 box-content">
-            
-                <!-- Buttons -->
+
+            <!-- Buttons -->
             <div class="flex mt-14 mr-2 space-x-2">
                 <a href="#" class="border py-1 px-3 rounded-full">
                     ···
@@ -45,9 +44,9 @@
 
         <!-- Info -->
         <div>
-            <p class="font-bold text-xl">{{ nickname }}</p>
+            <p class="font-bold text-xl">{{ current_user.nickname }}</p>
             <div class="flex gap-2 items-center">
-                <p class="text-sm text-slate-500">@{{ handle }}</p>
+                <p class="text-sm text-slate-500">@{{ current_user.handle }}</p>
                 <p class="text-sm text-slate-500">Follows you</p>
             </div>
         </div>
@@ -81,12 +80,13 @@
 </div>
 <!-- end profile area -->
 
-    {% for post in all_users_post %}
-        {{ components.post(
-            nickname=post.nickname,
-            handle=post.handle,
-            timestamp=post.friendly_date + " " + post.friendly_time,
-            body=post.body
-        ) }}
-    {% endfor %}
+{% for post in all_users_post %}
+{{ components.post(
+nickname=post.nickname,
+handle=post.handle,
+timestamp=post.friendly_date + " " + post.friendly_time,
+body=post.body,
+post_id=post.id
+) }}
+{% endfor %}
 {% endblock content %}
