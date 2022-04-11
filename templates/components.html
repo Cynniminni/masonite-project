@@ -1,23 +1,23 @@
-{% macro post(nickname, handle, timestamp, body, post_id, current_user) -%}
+{% macro post(current_user, post_data) -%}
 <!-- post -->
 <div class="p-3 flex space-x-4 hover:bg-slate-800 transition md:mt-0" style="border-top: 1px solid #334155">
-    <a href="/{{ handle }}">
-        <img src="/static/pfp_generic_user.png" class="w-14 h-14 object-cover rounded-full">
+    <a href="/{{ post_data.handle }}">
+        <img src="{{ post_data.picture }}" class="w-14 h-14 object-cover rounded-full">
     </a>
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
         <div class="flex justify-between">
             <div class="flex gap-2 items-center">
-                <a href="/{{ handle }}" class="hover:underline">
-                    <span class="font-bold">{{ nickname }}</span>
+                <a href="/{{ post_data.handle }}" class="hover:underline">
+                    <span class="font-bold">{{ post_data.nickname }}</span>
                 </a>
                 <span>-</span>
-                <a href="/{{ handle }}" class="hover:underline">
-                    <span class="text-sm text-slate-500">@{{ handle }}</span>
+                <a href="/{{ post_data.handle }}" class="hover:underline">
+                    <span class="text-sm text-slate-500">@{{ post_data.handle }}</span>
                 </a>
                 <span>-</span>
-                <a href="/{{ handle }}/post/{{ post_id }}" class="hover:underline">
-                    <span class="text-sm text-slate-500">{{ timestamp }}</span>
+                <a href="/{{ post_data.handle }}/post/{{ post_data.id }}" class="hover:underline">
+                    <span class="text-sm text-slate-500">{{ post_data.friendly_date }}, {{ post_data.friendly_time }}</span>
                 </a>
             </div>
             <div>
@@ -33,7 +33,7 @@
 
         <!-- text body -->
         <span class="text-justify pr-4">
-            {{ body }}
+            {{ post_data.body }}
         </span>
 
         <!-- img body -->

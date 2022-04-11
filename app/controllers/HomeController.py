@@ -19,7 +19,8 @@ class HomeController(Controller):
         all_posts = builder.table('posts').select(
             'id',
             'profiles.nickname',
-            'profiles.handle',            
+            'profiles.handle',
+            'profiles.picture',
             'body', 
             'friendly_date', 
             'friendly_time'

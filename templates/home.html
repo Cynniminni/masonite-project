@@ -11,12 +11,8 @@
 
     {% for post in posts %}
         {{ components.post(
-        nickname=post.nickname,
-        handle=post.handle,
-        timestamp=post.friendly_date + " " + post.friendly_time,
-        body=post.body,
-        post_id=post.id,
-        current_user=current_user
-        ) }}
+            current_user=current_user,
+            post_data=post
+        ) }}        
     {% endfor %}
 {% endblock content %}
