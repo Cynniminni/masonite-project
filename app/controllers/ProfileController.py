@@ -15,7 +15,7 @@ class ProfileController(Controller):
         print("----------------")
         # Get handle of the user
         user_handle = request.param("handle")
-
+        
         # Get all posts belonging to the given user handle
         builder = QueryBuilder().table("posts")
         builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')
@@ -81,11 +81,27 @@ class ProfileController(Controller):
         current_is_following = True if current_is_following else False
         print(f"(@{profile_user['handle']} -> @{current_user['handle']}) profile_is_following = {profile_is_following}")
         print(f"(@{current_user['handle']} -> @{profile_user['handle']}) current_is_following = {current_is_following}")
+        
+        # Get following and follower counts for profile_user
+        builder = QueryBuilder().table("followings")
+        builder = builder.join('users', "followings.user_id", "=", "users.id")
+        following_count = builder.table("followings").select("*").where(
+            "user_id",
+            profile_user["user_id"]
+        ).get().count()
+        followers_count = builder.table("followings").select("*").where(
+            "following_id",
+            profile_user["user_id"]
+        ).get().count()
+        print(f"@{profile_user['handle']} - {following_count} Following, {followers_count} Followers")
+
         data = {
             'all_users_post': all_users_posts,
             "profile_user": profile_user,
             "current_user": current_user,
             "profile_is_following": profile_is_following,
-            "current_is_following": current_is_following
+            "current_is_following": current_is_following,
+            "profile_following_count": following_count,
+            "profile_followers_count": followers_count
         }
         return view.render("profile", data)
