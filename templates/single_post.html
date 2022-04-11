@@ -4,13 +4,12 @@
 {% block title %}Single Post{% endblock %}
 
 {% block content %}
-    {% for post in single_post %}
-        {{ components.post(
-            nickname=post.nickname,
-            handle=post.handle,
-            timestamp=post.friendly_date + " " + post.friendly_time,
-            body=post.body,
-            post_id=post.id
-        ) }}
-    {% endfor %}
+    {{ components.post(
+    nickname=single_post.nickname,
+    handle=single_post.handle,
+    timestamp=single_post.friendly_date + " " + single_post.friendly_time,
+    body=single_post.body,
+    post_id=single_post.id,
+    current_user=current_user
+    ) }}
 {% endblock content %}

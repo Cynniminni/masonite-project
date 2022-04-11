@@ -18,9 +18,7 @@ class PostController(Controller):
         print("----------------")
         print(f"{controller_method}")
         print("----------------")
-        print(f"user_handle = {user_handle}, post_id: {post_id}")
-
-        # Query posts table to get the post by post_id
+        # Get the single post using handle and post id
         builder = QueryBuilder().table("posts")
         builder = builder.join("profiles", "posts.user_id", "=", "profiles.user_id")
         single_post = builder.table("posts").select(
@@ -36,17 +34,26 @@ class PostController(Controller):
         ).where(
             "posts.id",
             post_id
-        )
-        print(f"SQL = {single_post.to_sql()}")
+        ).get().first()
 
-        single_post = single_post.get()
-        single_post = {
+        # Get the current user profile info
+        current_user_id = request.user().id
+        builder = QueryBuilder().table("profiles")
+        builder = builder.join("users", "profiles.user_id", "=", "users.id")
+        current_user = builder.table("profiles").select(
+            '*'
+        ).where(
+            'user_id',
+            current_user_id
+        ).get().first()
+
+        data = {
             "single_post": single_post,
-            "post_id": post_id
+            "current_user": current_user
         }
-        print(f"single_post = {single_post}")
-
-        return view.render("single_post", single_post)
+        print(f"Currently logged in as @{current_user['handle']}")
+        print(f"Retrieving single post from @{user_handle} - Post id: {post_id}")
+        return view.render("single_post", data)
 
     def store(self, view: View, request: Request):
         """
