@@ -15,9 +15,8 @@ class ProfileController(Controller):
         print("----------------")
         # Get handle of the user
         user_handle = request.param("handle")
-        print(f"user_handle = {user_handle}")
 
-        # Get all posts belonging to the current authenticated user
+        # Get all posts belonging to the given user handle
         builder = QueryBuilder().table("posts")
         builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')
         all_users_posts = builder.table('posts').select(
@@ -40,20 +39,26 @@ class ProfileController(Controller):
         builder = QueryBuilder().table("profiles")
         builder = builder.join("users", "profiles.user_id", "=", "users.id")
         current_user = builder.table("profiles").select(
-            'nickname',
-            'handle',
-            "bio",
-            'picture',
-            'banner'
+            '*'
         ).where(
             'user_id',
             current_user_id
         ).get().first()
 
+        # Get profile of given user handle
+        builder = QueryBuilder().table("profiles")
+        user = builder.table("profiles").select(
+            "*"
+        ).where(
+            "handle",
+            user_handle
+        ).get().first()
+        print(f"Accessing profile of @{user_handle}")
+        print(user)
+
         data = {
             'all_users_post': all_users_posts,
-            # 'nickname': nickname.first()['nickname'],
-            'handle': user_handle,
+            "profile_user": user,
             "current_user": current_user
         }
         return view.render("profile", data)
