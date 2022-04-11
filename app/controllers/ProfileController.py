@@ -2,6 +2,7 @@ from masonite.request import Request
 from masonite.controllers import Controller
 from masonite.views import View
 from masoniteorm.query import QueryBuilder
+from datetime import datetime
 
 
 class ProfileController(Controller):
@@ -95,6 +96,15 @@ class ProfileController(Controller):
         ).get().count()
         print(f"@{profile_user['handle']} - {following_count} Following, {followers_count} Followers")
 
+        # Parse out friendly join date
+        join_date = str(profile_user["created_at"])
+        join_date = join_date.split()
+        join_date = join_date[0]  # First element is yyyy-mm-dd
+        date_format = "%Y-%m-%d"
+        friendly_join_date = datetime.strptime(join_date, date_format)
+        date_format = "%B %Y"
+        friendly_join_date = friendly_join_date.strftime(date_format)
+
         data = {
             'all_users_post': all_users_posts,
             "profile_user": profile_user,
@@ -102,6 +112,7 @@ class ProfileController(Controller):
             "profile_is_following": profile_is_following,
             "current_is_following": current_is_following,
             "profile_following_count": following_count,
-            "profile_followers_count": followers_count
+            "profile_followers_count": followers_count,
+            "profile_join_date": friendly_join_date
         }
         return view.render("profile", data)
