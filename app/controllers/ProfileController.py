@@ -23,6 +23,7 @@ class ProfileController(Controller):
             "id",
             "profiles.nickname",
             "profiles.handle",
+            "profiles.picture",
             "body",
             "friendly_date",
             "friendly_time"
@@ -47,18 +48,18 @@ class ProfileController(Controller):
 
         # Get profile of given user handle
         builder = QueryBuilder().table("profiles")
-        user = builder.table("profiles").select(
+        profile_user = builder.table("profiles").select(
             "*"
         ).where(
             "handle",
             user_handle
         ).get().first()
         print(f"Accessing profile of @{user_handle}")
-        print(user)
+        print(profile_user)
 
         data = {
             'all_users_post': all_users_posts,
-            "profile_user": user,
+            "profile_user": profile_user,
             "current_user": current_user
         }
         return view.render("profile", data)
