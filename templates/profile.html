@@ -15,13 +15,12 @@
         <div class="flex justify-between items-center">
             <!-- Avatar -->
             <img src="{{ profile_user.picture }}"
-                class="ml-2 w-32 h-32 object-cover rounded-full border-slate-900 border-4 box-content">
+                class="ml-2 w-32 h-32 object-cover rounded-lg border-slate-900 border-4 box-content">
 
             <!-- Buttons -->
-            <div class="flex mt-14 mr-2 space-x-2">
-                <a href="#" class="border py-1 px-3 rounded-full font-semibold">
-                    Edit Profile
-                </a>
+            <div class="flex mt-14 mr-2 space-x-2">                
+                <!-- Only show these buttons if it's not yourself -->
+                {% if not profile_user.handle == current_user.handle %}
                 <a href="#" class="border py-1 px-3 rounded-full">
                     ···
                 </a>
@@ -39,9 +38,6 @@
                             d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                     </svg>
                 </a>
-                
-                <!-- Only show Follow button if it's not yourself -->
-                {% if not profile_user.handle == current_user.handle %}
                     <!-- Check if profile user is following current user -->
                     {% if current_is_following %}
                     <a href="#" class="border py-1 px-3 rounded-full font-bold">
@@ -52,6 +48,10 @@
                         Follow
                     </a>
                     {% endif %}
+                {% else %}
+                <a href="#" class="border py-1 px-3 rounded-full font-semibold">
+                    Edit Profile
+                </a>
                 {% endif %}
             </div>
         </div>
@@ -90,6 +90,10 @@
             <div class="flex gap-1">
                 <p class="font-bold">{{ profile_followers_count }}</p>
                 <p class="text-slate-500">Followers</p>
+            </div>
+            <div class="flex space-x-1 text-slate-500">
+                <p class="font-semibold">999</p>
+                <p>Posts</p>
             </div>
         </div>
     </div>
