@@ -2,6 +2,7 @@ from masonite.controllers import Controller
 from masonite.views import View
 from app.models.Post import Post
 from masonite.request import Request
+from masonite.response import Response
 from masoniteorm.query import QueryBuilder
 from datetime import datetime
 
@@ -56,10 +57,14 @@ class PostController(Controller):
         print(f"Retrieving single post from @{user_handle} - Post id: {post_id}")
         return view.render("single_post", data)
 
-    def store(self, view: View, request: Request):
+    def store(self, view: View, request: Request, response: Response):
         """
         Get the user's input from the request object. This is coming from the <form> in blog.html.
         """
+        controller_method = "PostController@store"
+        print("----------------")
+        print(f"{controller_method}")
+        print("----------------")
         # TODO: Verify request user is authenticated
 
         # Get the current date and time
@@ -70,20 +75,20 @@ class PostController(Controller):
         current_time = current_date_time.strftime(date_time_format)
 
         # Create the post
-        Post.create(
+        post = Post.create(
             body=request.input('body'),
-            author_id=request.user().id,
+            user_id=request.user().id,
             friendly_date=current_day,
             friendly_time=current_time,
         )
 
         # Get all posts in the database
         builder = QueryBuilder().table("posts")
-        builder = builder.join('users', 'posts.author_id', '=', 'users.id')
+        builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')
         all_posts = builder.table('posts').select(
-            'post_id',
-            'users.nickname',
-            'users.handle',
+            'id',
+            'profiles.nickname',
+            'profiles.handle',
             'body', 
             'friendly_date', 
             'friendly_time'
@@ -91,13 +96,25 @@ class PostController(Controller):
             "posts.created_at",
             "desc"
         ).get()
-        
-        all_posts = {
-            'posts': all_posts
-        }
 
-        # TODO: Redirect to home page if creating post is successful
-        return view.render("home", all_posts)
+        # Get the current user profile info
+        current_user_id = request.user().id
+        builder = QueryBuilder().table("profiles")
+        builder = builder.join("users", "profiles.user_id", "=", "users.id")
+        current_user = builder.table("profiles").select(
+            '*'
+        ).where(
+            'user_id',
+            current_user_id
+        ).get().first()
+        
+        data = {
+            'posts': all_posts,
+            "current_user": current_user
+        }
+        print(f"Creating post for user @{current_user['handle']}")
+        print(f"Post: {post.friendly_date} - {post.friendly_time} - {post.body}")
+        return response.redirect(name="home", params=data)
 
     def update(self, view: View, request: Request):
         post = Post.find(request.param('id'))
