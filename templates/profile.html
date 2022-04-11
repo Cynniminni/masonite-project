@@ -103,7 +103,8 @@
 {% for post in all_users_post %}
     {{ components.post(
         current_user=current_user,
-        post_data=post
+        post_data=post,
+        csrf_field=csrf_field
     ) }}
 {% endfor %}
 {% endblock content %}

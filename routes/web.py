@@ -9,7 +9,7 @@ ROUTES += [
     Route.get("/", "HomeController@show").middleware('auth').name("home"),
 
     # User Profile - Show all posts from the given user handle in desc created_at order
-    Route.get("/@handle", "ProfileController@show"),
+    Route.get("/@handle", "ProfileController@show").name("profile"),
 
     # Show a single post
     Route.get("/@handle/post/@post_id", "PostController@single"),
@@ -18,7 +18,7 @@ ROUTES += [
     Route.post("/@handle/post/create", "PostController@store"),
 
     # Delete a post
-    Route.post("/@handle/post/delete", "PostController@delete"),
+    Route.post("/@handle/post/delete/@post_id", "PostController@delete"),
 
     # Show a page with a form to create a single post
     Route.get("/blog", "BlogController@show"),

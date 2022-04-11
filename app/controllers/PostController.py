@@ -57,7 +57,7 @@ class PostController(Controller):
         print(f"Retrieving single post from @{user_handle} - Post id: {post_id}")
         return view.render("single_post", data)
 
-    def store(self, view: View, request: Request, response: Response):
+    def store(self, request: Request, response: Response):
         """
         Get the user's input from the request object. This is coming from the <form> in blog.html.
         """
@@ -121,10 +121,50 @@ class PostController(Controller):
 
         return view.render('update', {'post': post})
 
-    def delete(self, request: Request):
+    def delete(self, request: Request, response: Response):
         """
         Delete a single post
         """
-        post = Post.find(request.param('id'))
-        post.delete()
-        return 'post deleted'
+        # Get parameters from the request
+        user_handle = request.param("handle")
+        post_id = request.param("post_id")
+
+        # Delete post
+        post = Post.find(post_id)
+        post = post.delete()
+
+        # Get all posts in the database
+        builder = QueryBuilder().table("posts")
+        builder = builder.join('profiles', 'posts.user_id', '=', 'profiles.user_id')
+        all_posts = builder.table('posts').select(
+            'id',
+            'profiles.nickname',
+            'profiles.handle',
+            'body', 
+            'friendly_date', 
+            'friendly_time'
+        ).order_by(
+            "posts.created_at",
+            "desc"
+        ).get()
+
+        # Get the current user profile info
+        current_user_id = request.user().id
+        builder = QueryBuilder().table("profiles")
+        builder = builder.join("users", "profiles.user_id", "=", "users.id")
+        current_user = builder.table("profiles").select(
+            '*'
+        ).where(
+            'user_id',
+            current_user_id
+        ).get().first()
+
+        data = {
+            "posts": all_posts,
+            "current_user": current_user
+        }
+
+        print(f"Deleted post from @{user_handle} = {post}")
+        print(f"User was on {request.get_back_path()}, redirecting...")
+        # Go to home page if deleted from home page
+        return response.redirect(name="home", params=data)
