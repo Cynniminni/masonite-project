@@ -79,8 +79,8 @@ class ProfileController(Controller):
             profile_user["user_id"]
         ).get().first()
         current_is_following = True if current_is_following else False
-        print(f"(@{profile_user['handle']} -> @{current_user['handle']}) is_following = {profile_is_following}")
-        print(f"(@{current_user['handle']} -> @{profile_user['handle']}) is_following = {current_is_following}")
+        print(f"(@{profile_user['handle']} -> @{current_user['handle']}) profile_is_following = {profile_is_following}")
+        print(f"(@{current_user['handle']} -> @{profile_user['handle']}) current_is_following = {current_is_following}")
         data = {
             'all_users_post': all_users_posts,
             "profile_user": profile_user,

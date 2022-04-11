@@ -39,10 +39,16 @@
                 
                 <!-- Only show Follow button if it's not yourself -->
                 {% if not profile_user.handle == current_user.handle %}
-                    <!-- TODO: Check if profile user is following current user -->
+                    <!-- Check if profile user is following current user -->
+                    {% if current_is_following %}
+                    <a href="#" class="border py-1 px-3 rounded-full font-bold">
+                        Following
+                    </a>
+                    {% else %}
                     <a href="#" class="border py-1 px-3 rounded-full font-bold">
                         Follow
                     </a>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>
@@ -52,7 +58,10 @@
             <p class="font-bold text-xl">{{ profile_user.nickname }}</p>
             <div class="flex gap-2 items-center">
                 <p class="text-sm text-slate-500">@{{ profile_user.handle }}</p>
-                <p class="text-sm text-slate-500">Follows you</p>
+
+                {% if profile_is_following %}
+                <p class="text-sm text-slate-500 bg-slate-800 px-2 rounded">Follows you</p>
+                {% endif %}
             </div>
         </div>
 
