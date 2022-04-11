@@ -103,7 +103,7 @@ class ProfileController(Controller):
         date_format = "%Y-%m-%d"
         friendly_join_date = datetime.strptime(join_date, date_format)
         date_format = "%B %Y"
-        friendly_join_date = friendly_join_date.strftime(date_format)
+        friendly_join_date = friendly_join_date.strftime(date_format)        
 
         data = {
             'all_users_post': all_users_posts,
