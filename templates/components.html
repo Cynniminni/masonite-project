@@ -69,7 +69,7 @@
             </a>
 
             <!-- Add delete button if this post belongs to logged in user -->
-            {% if current_user.handle == handle %}
+            {% if current_user.handle == post_data.handle %}
             <a href="#" class="flex items-center space-x-2 hover:text-red-500 transition">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
