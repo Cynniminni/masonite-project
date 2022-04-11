@@ -42,6 +42,7 @@ class ProfileController(Controller):
         current_user = builder.table("profiles").select(
             'nickname',
             'handle',
+            "bio",
             'picture',
             'banner'
         ).where(
