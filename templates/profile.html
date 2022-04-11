@@ -86,7 +86,8 @@ nickname=post.nickname,
 handle=post.handle,
 timestamp=post.friendly_date + " " + post.friendly_time,
 body=post.body,
-post_id=post.id
+post_id=post.id,
+current_user=current_user
 ) }}
 {% endfor %}
 {% endblock content %}
