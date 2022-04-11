@@ -2,7 +2,7 @@
 <!-- post -->
 <div class="p-3 flex space-x-4 hover:bg-slate-800 transition md:mt-0" style="border-top: 1px solid #334155">
     <a href="/{{ post_data.handle }}">
-        <img src="{{ post_data.picture }}" class="w-14 h-14 object-cover rounded-full">
+        <img src="{{ post_data.picture }}" class="w-14 h-14 object-cover rounded-lg">
     </a>
     <div class="flex flex-col gap-2 w-full">
         <!-- username info and timestamp -->
@@ -92,7 +92,7 @@
 <!-- create post area -->
 <div class="p-2 gap-4 hidden md:mt-0 md:flex" style="border-top: 1px solid #334155">
     <a href="/{{ current_user.handle }}">
-        <img src="{{ current_user.picture }}" class="w-14 h-14 object-cover rounded-full">
+        <img src="{{ current_user.picture }}" class="w-14 h-14 object-cover rounded-lg">
     </a>
 
     <div class="flex flex-col gap-2 w-full">

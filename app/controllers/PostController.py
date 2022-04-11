@@ -165,6 +165,6 @@ class PostController(Controller):
         }
 
         print(f"Deleted post from @{user_handle} = {post}")
-        print(f"User was on {request.get_back_path()}, redirecting...")
-        # Go to home page if deleted from home page
+        print(f"User was on {request.get_back_path()}, redirecting to home...")
+        # # Go to home page if deleted from home page
         return response.redirect(name="home", params=data)
