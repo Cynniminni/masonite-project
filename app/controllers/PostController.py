@@ -25,6 +25,7 @@ class PostController(Controller):
             "posts.id",
             "profiles.nickname",
             "profiles.handle",
+            "profiles.picture",
             "body",
             "friendly_date",
             "friendly_time"

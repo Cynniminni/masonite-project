@@ -5,11 +5,7 @@
 
 {% block content %}
     {{ components.post(
-    nickname=single_post.nickname,
-    handle=single_post.handle,
-    timestamp=single_post.friendly_date + " " + single_post.friendly_time,
-    body=single_post.body,
-    post_id=single_post.id,
-    current_user=current_user
+        current_user=current_user,
+        post_data=single_post
     ) }}
 {% endblock content %}
