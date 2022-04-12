@@ -10,12 +10,12 @@
     <img src="{{ profile_user.banner }}" class="object-cover w-full h-64">
 
     <div class="flex-col">
-        <div class="flex space-x-2 p-3 justify-start border">
+        <div class="flex space-x-2 p-3 justify-start">
             <!-- Avatar -->
             <img src="{{ profile_user.picture }}" class="h-40 object-cover rounded-xl">
 
             <!-- Container for nickname, handle, etc. -->
-            <div class="flex-col space-y-2 border grow">
+            <div class="flex-col space-y-2 grow">
                 <!-- Info -->
                 <div>
                     <p class="font-bold text-xl">{{ profile_user.nickname }}</p>
@@ -59,7 +59,7 @@
             </div>
 
             <!-- Buttons: Show only on large screens -->
-            <div class="hidden md:flex space-x-1 items-start border shrink-0 max-w-min">
+            <div class="hidden md:flex space-x-1 items-start shrink-0 max-w-min">
                 <!-- Only show these buttons if it's not yourself -->
                 {% if not profile_user.handle == current_user.handle %}
                 <!-- <a href="#" class="border py-1 px-3 rounded-full">
